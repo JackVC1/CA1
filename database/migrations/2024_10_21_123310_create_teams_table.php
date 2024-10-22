@@ -9,17 +9,19 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+    // Additional fields added for records relevant to my database - these are used in TeamSeeder.php
     public function up(): void
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('manager');
+            $table->string('image');
             $table->text('location');
             $table->text('stadium');
             $table->integer('attendance');
             $table->integer('established');
-            $table->timestamps();
+            $table->timestamps(); //uses $currentTimestamps
         });
     }
 

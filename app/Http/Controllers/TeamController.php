@@ -12,7 +12,8 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        $teams = Team::all(); //Fetches all teams
+        return view('teams.index', compact('teams')); //Returns the view with teams
     }
 
     /**
@@ -36,7 +37,7 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        //
+        return view('teams.show')->with('team', $team);
     }
 
     /**
