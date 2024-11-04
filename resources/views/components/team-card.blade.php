@@ -1,3 +1,4 @@
+<!-- Defines properties passed into the component -->
 @props(['name', 'manager', 'image', 'location', 'stadium', 'attendance', 'year'])
 
 <!-- This component creates cards that display each teams information including their name manager, stadium  -->
