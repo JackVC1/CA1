@@ -19,6 +19,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
+Route::get('/teams/create', [TeamController::class, 'create'])->name('teams.create');
 Route::get('/teams/{team}', [TeamController::class, 'show'])->name('teams.show');
+Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
 
 require __DIR__.'/auth.php';

@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('teams.index')" :active="request()->routeIs('teams.index')">
                         {{ __('View All Teams') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('teams.create')" :active="request()->routeIs('teams.create')">
+                        {{ __('Create New Teams') }}
+                    </x-nav-link>
                 </div>
             </div>
 
