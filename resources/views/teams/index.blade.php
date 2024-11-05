@@ -14,18 +14,38 @@
                 <div class="p-6 text-gray-900">
                     <h3 class="font-semibold text-lg mb-4">List of Teams:</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
                         @foreach($teams as $team)
-                        <a href="{{ route('teams.show', $team) }}">
-                        <x-team-card
-                        :name="$team->name"
-                        :image="$team->image"
-                        :manager="$team->manager"
-                        :location="$team->location"
-                        :stadium="$team->stadium"
-                        :attendance="$team->attendance"
-                        :year="$team->year"
-                        />
-                        </a>
+                        <div>
+                            <a href="{{ route('teams.show', $team) }}">
+                                <x-team-card
+                                :name="$team->name"
+                                :image="$team->image"
+                                :manager="$team->manager"
+                                :location="$team->location"
+                                :stadium="$team->stadium"
+                                :attendance="$team->attendance"
+                                :year="$team->year"
+                                />
+                            </a>
+
+                            <!-- Edit and Delete Buttons -->
+                            <div class="mt-4 flex space-x-2">
+                                <!-- Edit button routes to teams.edit and receives the $team object so it knows which team is for editing -->
+                                <a href="{{ route('teams.edit', $team) }}" class="text-gray-600 bg-orange-300 hover:bg-orange-700 font-bold py-2 px-4 rounded">
+                                Edit
+                                </a>
+
+                                <!-- Delete Button -->
+                                <form action="{{ route('teams.destroy', $team) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this team?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-gray-600 font-bold py-2 px-4 rounded">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                         @endforeach
                     </div>
                 </div>
