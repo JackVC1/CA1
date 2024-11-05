@@ -75,7 +75,7 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        //
+        return view('teams.create');
     }
 
     /**
@@ -83,7 +83,19 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'manager' => 'required',
+            'location' => 'required',
+            'stadium' => 'required',
+            'attendance' => 'required|integer',
+            'established' => 'required|integer',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $team->update($validated);
+
+        return redirect(route('teams.index'));
     }
 
     /**
