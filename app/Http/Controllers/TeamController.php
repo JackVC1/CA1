@@ -37,10 +37,10 @@ class TeamController extends Controller
             'stadium' => 'required',
             'attendance' => 'required|integer',
             'established' => 'required|integer',
+        //Here, image is required as you must have an image when creating a new team
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Initialize $imageName to handle cases where there's no image
         $imageName = null;
 
         // Check if there’s an uploaded image and handle the upload
@@ -62,6 +62,7 @@ class TeamController extends Controller
             'updated_at' => now(),
         ]);
 
+        //This is used on each function - after each function is completed, your are redirected to the teams.index page and a green success message will appear
         return to_route('teams.index')->with('success', 'Team created successfully!');
     }
 
@@ -89,6 +90,7 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
 {
+    //I reused the validate form from store - this is because we are still using the same fields as when creating a team - just editing them instead
     $request->validate([
         'name' => 'required',
         'manager' => 'required',
@@ -100,8 +102,8 @@ class TeamController extends Controller
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 
-    // Initialize imageName to the existing image path
-    $imageName = $team->image; // Retain the existing image by default
+    // Original image is retained by default but can be changed
+    $imageName = $team->image;
 
     // Check if there’s an uploaded image and handle the upload
     if ($request->hasFile('image')) {
@@ -117,8 +119,8 @@ class TeamController extends Controller
         'stadium' => $request->stadium,
         'attendance' => $request->attendance,
         'established' => $request->established,
-        'image' => $imageName, // Use the existing or new image name
-        'updated_at' => now(), // Updated at is enough, created_at should not be changed
+        'image' => $imageName,
+        'updated_at' => now(),
     ]);
 
     return to_route('teams.index')->with('success', 'Team updated successfully!');

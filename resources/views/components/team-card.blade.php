@@ -1,7 +1,8 @@
 <!-- Defines properties passed into the component -->
 @props(['name', 'manager', 'image', 'location', 'stadium', 'attendance', 'year'])
 
-<!-- This component creates cards that display each teams information including their name manager, stadium  -->
+<!-- This component creates cards that display each teams information in a card in the following order -->
+<!-- Created on command line -->
 <div class="border rounded-lg shadow-md p-6 bg-white hover:shadow:lg translation duration-300">
     <h4 class="font-bold text-lg">{{ $name }}</h4>
     <img src="{{asset( 'images/teams/' . $image)}}" alt="{{$name}}">

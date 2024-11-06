@@ -1,13 +1,18 @@
+<!-- This is the home page of the application -->
+<!-- Each function routes back here when executed successfully -->
 <x-app-layout>
 <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <!-- Page title -->
         {{ __('All Teams') }}
     </h2>
+    <!-- calls success component and is displayed when function executes successfully -->
     <x-alert-success>
         {{ session('success') }}
     </x-alert-success>
 </x-slot>
 
+    <!-- page styling, consistent across application -->
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -15,6 +20,7 @@
                     <h3 class="font-semibold text-lg mb-4">List of Teams:</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
+                    <!-- Team card component - creates a card to contain and display all info passed into each team -->
                         @foreach($teams as $team)
                         <div>
                             <a href="{{ route('teams.show', $team) }}">
@@ -36,10 +42,11 @@
                                 Edit
                                 </a>
 
-                                <!-- Delete Button -->
+                                <!-- Delete Button - includes message asking if user are sure they want to delete team-->
                                 <form action="{{ route('teams.destroy', $team) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this team?')">
                                     @csrf
                                     @method('DELETE')
+                                    <!-- delete button red to differentiate from others and suit action -->
                                     <button type="submit" class="bg-red-500 hover:bg-red-700 text-gray-600 font-bold py-2 px-4 rounded">
                                         Delete
                                     </button>
