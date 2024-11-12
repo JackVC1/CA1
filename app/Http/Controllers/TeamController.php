@@ -22,6 +22,9 @@ class TeamController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->role !== 'admin') {
+            return redirect()->route('teams.index')->with('error', 'Access Denied.');
+        }
         return view('teams.create');
     }
 

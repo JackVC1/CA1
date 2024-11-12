@@ -18,9 +18,13 @@
                     <x-nav-link :href="route('teams.index')" :active="request()->routeIs('teams.index')">
                         {{ __('View All Teams') }}
                     </x-nav-link>
+
+                    <!-- the create link only appears for admin users -->
+                    @if(auth()->user()->role === 'admin')
                     <x-nav-link :href="route('teams.create')" :active="request()->routeIs('teams.create')">
                         {{ __('Create New Teams') }}
                     </x-nav-link>
+                    @endif
                 </div>
             </div>
 
