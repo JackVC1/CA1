@@ -19,4 +19,10 @@ class Team extends Model
         'established',
         'image',
     ];
+
+    public function players()
+    {
+        return $this->hasMany(Player::class);
+    }
+
 }

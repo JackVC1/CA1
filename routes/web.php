@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\PlayerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,5 +29,13 @@ Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
 Route::put('/teams/{team}', [TeamController::class, 'update'])->name('teams.update');
 Route::get('/teams/{team}/edit', [TeamController::class, 'edit'])->name('teams.edit');
 Route::delete('/teams/{team}', [TeamController::class, 'destroy'])->name('teams.destroy');
+
+
+// the code below creates all routes for players
+Route::resource('players', PlayerController::class);
+
+Route::post('teams/{team}/players', [PlayerController::class, 'store'])->name('players.store');
+
+
 
 require __DIR__.'/auth.php';
