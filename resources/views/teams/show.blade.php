@@ -37,6 +37,21 @@
                                 <p>Position: {{ $player->position }}</p>
                                 <p>Country: {{ $player->country }}</p>
                                 <p>Last Club: {{ $player->signed_from }}</p>
+
+                        @if ($player->user->is(auth()->user()) || auth()->user()->role === 'admin')
+
+                        <a href="{{ route('players.edit', $player) }}" class="bg-yellow-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+                            {{ __('Edit Player') }}
+                        </a>
+                        <form method="POST" action="{{ route('players.destroy', $player) }}">
+                            @csrf
+                            @method('delete')
+                            <x-danger-button :href="route('players.destroy', $player)"
+                                                onclick="event.preventDefault(); this.closest('form').submit();">
+                                                {{ __('Delete Player') }}
+                            </x-danger-button>
+                        </form>
+                        @endif
                             </li>
                             @endforeach
                          </ul>

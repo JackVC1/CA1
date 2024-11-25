@@ -88,7 +88,14 @@ class PlayerController extends Controller
      */
     public function edit(Player $player)
     {
-        //
+        // Check if the user is the player owner or an admin
+        if (auth()->user()->id !== $player->user_id && auth()->user()->role !== 'admin') {
+            return redirect()->route('teams.index')->with('error', 'Access Denied.');
+        }
+
+        // I am passing the team and the player object to the view, as they are both needed
+        return view('players.edit', compact('player'));
+
     }
 
     /**
@@ -96,7 +103,11 @@ class PlayerController extends Controller
      */
     public function update(Request $request, Player $player)
     {
-        //
+        // only alter variables not team and user id
+        $player->update($request->only(['name', 'age', 'position', 'country', 'signed_from']));
+
+        return redirect()->route('teams.show', $player->team_id)
+                         ->with('success', 'Player Updated Successfully!');
     }
 
     /**
