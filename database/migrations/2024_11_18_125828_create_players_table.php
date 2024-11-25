@@ -17,6 +17,9 @@ return new class extends Migration
             $table->foreignId('team_id')
                   ->constrained()
                   ->onDelete('cascade');
+            $table->foreignId('user_id')
+                  ->constrained()
+                  ->onDelete('cascade');
             $table->integer('age');
             $table->text('position')->nullable();
             $table->text('country')->nullable();

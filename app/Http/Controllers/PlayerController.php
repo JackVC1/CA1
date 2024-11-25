@@ -18,6 +18,7 @@ class PlayerController extends Controller
             $table->id();
             //cascade here means if a team is deleted - so are the players
             $table->foreignId('team_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('name');
             $table->integer('age');
             $table->text('position')->nullable();
@@ -47,26 +48,32 @@ class PlayerController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request, Team $team)
-    {
-        $request->validate([
-            'name' => 'required|string',
-            'age' => 'required|integer',
-            'position' => 'required|string',
-            'country' => 'required|string',
-            'signed_from' => 'required|string',
-        ]);
+{
+    // Validation for the incoming player data
+    $request->validate([
+        'name' => 'required|string',
+        'age' => 'required|integer',
+        'position' => 'required|string',
+        'country' => 'required|string',
+        'signed_from' => 'required|string',
+    ]);
 
-        $team->players()->create([
-            'team_id' => auth()->id(),
-            'name' => $request->input('name'),
-            'age' => $request->input('age'),
-            'position' => $request->input('position'),
-            'country' => $request->input('country'),
-            'signed_from' => $request->input('signed_from'),
-        ]);
+    // Create a new player associated with the team and authenticated user
+    $team->players()->create([
+        'team_id' => $team->id, // Correctly associating the team
+        'user_id' => auth()->id(), // Associate the player with the authenticated user
+        'name' => $request->input('name'),
+        'age' => $request->input('age'),
+        'position' => $request->input('position'),
+        'country' => $request->input('country'),
+        'signed_from' => $request->input('signed_from'),
+    ]);
 
-        return redirect()->route('teams.show', $team)->with('success', 'player added successfully!');
-    }
+    // Redirect back to the team's details page with success message
+    return redirect()->route('teams.show', $team)->with('success', 'Player added successfully!');
+}
+
+
 
     /**
      * Display the specified resource.

@@ -31,7 +31,7 @@
                          <ul class="mt-4 space-y-4">
                             @foreach($team->players as $player)
                             <li class="bg-gray-100 p-4 rounded-lg">
-                                <p class="font-semibold">{{ $player->name }} ({{ $player->created_at->format('M d,Y') }})</p>
+                                <p class="font-semibold">{{ $player->user->name }} ({{ $player->created_at->format('M d,Y') }})</p>
                                 <p>Player: {{ $player->name }}</p>
                                 <p>Age: {{ $player->age }}</p>
                                 <p>Position: {{ $player->position }}</p>
