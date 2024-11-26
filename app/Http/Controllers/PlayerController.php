@@ -95,6 +95,7 @@ class PlayerController extends Controller
 
         // I am passing the team and the player object to the view, as they are both needed
         return view('players.edit', compact('player'));
+        return to_route('teams.index')->with('success', 'Player updated successfully!');
 
     }
 
@@ -109,7 +110,7 @@ class PlayerController extends Controller
         return redirect()->route('teams.show', $player->team_id)
                          ->with('success', 'Player Updated Successfully!');
 
-        return to_route('teams.index')->with('success', 'Player updated successfully!');
+        return to_route('teams.show')->with('success', 'Player updated successfully!');
     }
 
     /**
