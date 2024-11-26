@@ -72,9 +72,6 @@ class PlayerController extends Controller
     // Redirect back to the team's details page with success message
     return to_route('teams.index')->with('success', 'Player created successfully!');
 }
-
-
-
     /**
      * Display the specified resource.
      */
