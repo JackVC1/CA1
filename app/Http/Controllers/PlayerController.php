@@ -70,7 +70,7 @@ class PlayerController extends Controller
     ]);
 
     // Redirect back to the team's details page with success message
-    return redirect()->route('teams.show', $team)->with('success', 'Player added successfully!');
+    return to_route('teams.index')->with('success', 'Player created successfully!');
 }
 
 
@@ -108,6 +108,8 @@ class PlayerController extends Controller
 
         return redirect()->route('teams.show', $player->team_id)
                          ->with('success', 'Player Updated Successfully!');
+
+        return to_route('teams.index')->with('success', 'Player updated successfully!');
     }
 
     /**
@@ -115,6 +117,8 @@ class PlayerController extends Controller
      */
     public function destroy(Player $player)
     {
-        //
+        $player->delete();
+
+        return to_route('teams.index')->with('success', 'Player deleted successfully!');
     }
 }

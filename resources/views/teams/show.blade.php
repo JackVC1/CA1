@@ -43,14 +43,14 @@
                         <a href="{{ route('players.edit', $player) }}" class="bg-yellow-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
                             {{ __('Edit Player') }}
                         </a>
-                        <form method="POST" action="{{ route('players.destroy', $player) }}">
+                        <form method="POST" action="{{ route('players.destroy', $player) }}" onsubmit="return confirm('Are you sure you want to delete this player?')">
                             @csrf
                             @method('delete')
-                            <x-danger-button :href="route('players.destroy', $player)"
-                                                onclick="event.preventDefault(); this.closest('form').submit();">
-                                                {{ __('Delete Player') }}
+                            <x-danger-button onclick="this.closest('form').submit();">
+                                {{ __('Delete Player') }}
                             </x-danger-button>
                         </form>
+
                         @endif
                             </li>
                             @endforeach
