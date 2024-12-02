@@ -20,9 +20,16 @@ class Team extends Model
         'image',
     ];
 
+    // Team can have many Players
     public function players()
     {
         return $this->hasMany(Player::class);
+    }
+
+    // Team can have many Competitions
+    public function competitions()
+    {
+        return $this->belongsToMany(Competition::class);
     }
 
 }

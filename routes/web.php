@@ -36,6 +36,6 @@ Route::resource('players', PlayerController::class);
 
 Route::post('teams/{team}/players', [PlayerController::class, 'store'])->name('players.store');
 
-
+Route::resource('competitions', CompetitionController::class)->middleware('auth');
 
 require __DIR__.'/auth.php';
