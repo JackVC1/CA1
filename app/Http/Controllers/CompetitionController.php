@@ -13,7 +13,8 @@ class CompetitionController extends Controller
      */
     public function index()
     {
-        //
+        $competitions = Competition::all(); //Fetches all competitions
+        return view('competitions.index', compact('competitions')); //Returns the view with all competitions
     }
 
     /**
@@ -37,7 +38,8 @@ class CompetitionController extends Controller
      */
     public function show(Competition $competition)
     {
-        //
+        $competition->load('teams');
+        return view('competitions.show')->with('competition', $competition);
     }
 
     /**

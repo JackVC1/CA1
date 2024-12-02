@@ -19,6 +19,10 @@
                         {{ __('View All Teams') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('competitions.index')" :active="request()->routeIs('competitions.index')">
+                        {{ __('View All Competitions') }}
+                    </x-nav-link>
+
                     <!-- the create link only appears for admin users -->
                     @if(auth()->user()->role === 'admin')
                     <x-nav-link :href="route('teams.create')" :active="request()->routeIs('teams.create')">
