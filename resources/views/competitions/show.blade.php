@@ -36,6 +36,7 @@
                         :year="$team->year"
                         />
                     @endforeach
+
                     </div>
 
                 </div>

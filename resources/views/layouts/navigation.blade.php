@@ -28,6 +28,10 @@
                     <x-nav-link :href="route('teams.create')" :active="request()->routeIs('teams.create')">
                         {{ __('Create New Teams') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('competitions.create')" :active="request()->routeIs('competitions.create')">
+                        {{ __('Create New Competition') }}
+                    </x-nav-link>
                     @endif
                 </div>
             </div>
