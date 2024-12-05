@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CompetitionController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Displays a listing of the resource.
      */
     public function index()
     {

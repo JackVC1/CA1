@@ -32,11 +32,12 @@ Route::get('/teams/{team}/edit', [TeamController::class, 'edit'])->name('teams.e
 Route::delete('/teams/{team}', [TeamController::class, 'destroy'])->name('teams.destroy');
 
 
-// the code below creates all routes for players
+// the code below creates all CRUD routes for players
 Route::resource('players', PlayerController::class);
 
 Route::post('teams/{team}/players', [PlayerController::class, 'store'])->name('players.store');
 
+// this code creates all CRUD routes for competitions
 Route::resource('competitions', CompetitionController::class)->middleware('auth');
 
 require __DIR__.'/auth.php';

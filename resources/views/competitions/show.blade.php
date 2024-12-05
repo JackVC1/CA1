@@ -3,6 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Competition Details') }}
         </h2>
+        <!-- success messages when update successful -->
         <x-alert-success>
             {{ session('success') }}
         </x-alert-success>
@@ -25,6 +26,7 @@
 
                     <h4 class="font-semibold text-lg mb-4">Competition Teams</h4>
                     <div class="team-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- Loop through each team associated with the competition -->
                     @foreach($competition->teams as $team)
                         <x-team-card
                         :name="$team->name"

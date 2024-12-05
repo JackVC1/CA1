@@ -6,6 +6,7 @@
         @method($method)
     @endif
 
+    <!-- Name input fields for adding or updating -->
     <div class="mb-4">
         <label for="name" class="block text-sm text-gray-700">Competition Name</label>
         <input
@@ -20,12 +21,14 @@
         @enderror
     </div>
 
+    <!-- image input fields for adding or updating -->
     @isset($competition->image)
         <div class="mb-4">
             <img src="{{ asset('images/teams/' . $competition->image) }}" alt="Competition logo" class="w-24 h-24 object-cover">
         </div>
     @endisset
 
+    <!-- competition input fields for adding or updating -->
     <div class="mb-4">
         <label for="format" class="block text-sm text-gray-700">Competition Format</label>
         <input
@@ -40,6 +43,7 @@
         @enderror
     </div>
 
+    <!-- prize money input fields for adding or updating -->
     <div class="mb-4">
         <label for="prize_money" class="block text-sm text-gray-700">Prize Money</label>
         <input
@@ -54,6 +58,7 @@
         @enderror
     </div>
 
+    <!-- image input fields for adding or updating -->
     <div class="mb-4">
         <label for="image" class="block text-sm font-medium text-gray-700">Competition Logo (Optional)</label>
         <input
@@ -68,6 +73,7 @@
     </div>
 
     <div>
+        <!-- when clicked competition is updated or added -->
         <x-primary-button>
             {{ isset($competition) ? 'Update Competition' : 'Add Competition' }}
         </x-primary-button>

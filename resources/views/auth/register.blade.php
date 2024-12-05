@@ -39,8 +39,8 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <!-- Add a dropdown box to the registration form that allows users to choose user or admin -->
-        <!-- not a secure way to create admin, just for this CA -->
+        <!-- This code adds a dropdown box to the registration form that allows users to choose user or admin account roles -->
+        <!-- this is NOT a secure way to create admin, just for this CA -->
         <div>
             <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
             <select id="role" name="role" class="mt-1 block w-full" required>

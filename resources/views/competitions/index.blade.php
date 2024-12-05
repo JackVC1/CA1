@@ -31,7 +31,7 @@
 
                             <!-- Edit and Delete Buttons -->
                             <div class="mt-4 flex space-x-2">
-                                <!-- Edit button -->
+                                <!-- Edit button when clicked edit competitions opens-->
                                 <a href="{{ route('competitions.edit', $competition) }}" class="text-gray-600 bg-orange-300 hover:bg-orange-700 font-bold py-2 px-4 rounded">
                                     Edit
                                 </a>

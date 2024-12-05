@@ -60,11 +60,13 @@
                          </ul>
                          @endif
 
+                         <!-- Section of page for adding a new player to a team -->
                          {{--- Add A New Player ---}}
                          <h4 class="font-semibold text-md mt-8">Add a Player</h4>
                          <form action="{{ route('players.store', $team) }}" method="POST" class="mt-4">
                             @csrf
 
+                            <!-- input field for player name -->
                             <div class="mb-4">
                         <label for="name" class="block text-sm text-gray-700">Name</label>
                         <input
@@ -79,6 +81,7 @@
                         @enderror
                         </div>
 
+                        <!-- input field for player age -->
                         <div class="mb-4">
                         <label for="age" class="block text-sm text-gray-700">Age</label>
                         <input
@@ -93,6 +96,7 @@
                         @enderror
                         </div>
 
+                        <!-- input field for player position -->
                         <div class="mb-4">
                         <label for="position" class="block text-sm text-gray-700">Position</label>
                         <input
@@ -107,6 +111,7 @@
                         @enderror
                         </div>
 
+                        <!-- input field for player country -->
                         <div class="mb-4">
                         <label for="country" class="block text-sm text-gray-700">Country</label>
                         <input
@@ -121,6 +126,7 @@
                         @enderror
                         </div>
 
+                        <!-- input field for team the player was signed from  -->
                         <div class="mb-4">
                         <label for="signed from" class="block text-sm text-gray-700">Signed From</label>
                         <input
@@ -135,6 +141,7 @@
                         @enderror
                         </div>
 
+                        <!-- button to submit a player to a team and add him to the database -->
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             Submit Player
                         </button>

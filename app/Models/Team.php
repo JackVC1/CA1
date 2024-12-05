@@ -20,13 +20,13 @@ class Team extends Model
         'image',
     ];
 
-    // Team can have many Players
+    // players written as plural as a Team can have many Players
     public function players()
     {
         return $this->hasMany(Player::class);
     }
 
-    // Team can have many Competitions
+    // competitions written as a plural as a Team can be in many Competitions
     public function competitions()
     {
         return $this->belongsToMany(Competition::class);
