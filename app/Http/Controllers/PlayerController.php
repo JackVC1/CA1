@@ -16,7 +16,7 @@ class PlayerController extends Controller
     {
         Schema::create('players', function (Blueprint $table){
             $table->id();
-            //cascade here means if a team is deleted - so are the players
+            //cascade here means if a team is deleted - so are the players i.e bray deleted max murphy deleted
             $table->foreignId('team_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('name');
@@ -101,12 +101,12 @@ class PlayerController extends Controller
      */
     public function update(Request $request, Player $player)
     {
-        // only alter variables not team and user id
+        // only alter variables (name, age, country, position and signed from) not team and user id
         $player->update($request->only(['name', 'age', 'position', 'country', 'signed_from']));
 
         return redirect()->route('teams.show', $player->team_id)
                          ->with('success', 'Player Updated Successfully!');
-
+        //success message to show player was successfully updated
         return to_route('teams.show')->with('success', 'Player updated successfully!');
     }
 
